@@ -11,7 +11,7 @@ let start = function (randomNum) {
     // Рандомное число
     const getRandomNum = function() {
         randomNum = Math.floor(Math.random() * 101);  // Загаданое случайное число от 1 до 100
-        console.log(randomNum);
+        
 
         // Введенное число userNum
         const getUserNum = function(userNum) {
@@ -20,9 +20,8 @@ let start = function (randomNum) {
             if (userNum === null) {
                 alert('Игра окончена');
                 return;
-            }
-            if (!isNumber(userNum)) {
-                return(alert('Игра окончена'));
+            }else if (!isNumber(userNum)) {
+                return(alert('Введите число!'));
             } else if (userNum > randomNum) {                      
                 return(confirm('Загаданное число меньше\nПопробуй снова')), 
                 getUserNum(userNum);
@@ -32,10 +31,10 @@ let start = function (randomNum) {
             } else if (userNum !== randomNum) {
                 return(alert('Поздравляю, Вы угадали!!!'));  
             } else {
-                alert('Введите число!');
+                alert('Игра окончена');
                 getUserNum(userNum);
             }
-            console.log(userNum); 
+               
         };
         getUserNum(userNum);
     };
