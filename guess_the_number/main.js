@@ -12,7 +12,6 @@ let start = function (randomNum) {
     const getRandomNum = function() {
         randomNum = Math.floor(Math.random() * 101);  // Загаданое случайное число от 1 до 100
         
-
         // Введенное число userNum
         const getUserNum = function(userNum) {
             userNum = prompt('Угадай число от 1 до 100'); 
