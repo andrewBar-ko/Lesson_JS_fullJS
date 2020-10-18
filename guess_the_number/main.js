@@ -20,7 +20,8 @@ let start = function (randomNum) {
                 alert('Игра окончена');
                 return;
             }else if (!isNumber(userNum)) {
-                return(alert('Введите число!'));
+                return(confirm('Введите число!'),
+                getUserNum(userNum));
             } else if (userNum > randomNum) {                      
                 return(confirm('Загаданное число меньше\nПопробуй снова')), 
                 getUserNum(userNum);
