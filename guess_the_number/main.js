@@ -2,11 +2,11 @@
 
 let userNum;
 
-let isNumber = function(n) {
+const isNumber = function(n) {
     return !isNaN(parseFloat(n)) && isFinite(n);
 };
 
-let start = function (randomNum) {
+const start = function (randomNum) {
     
     // Рандомное число
     const getRandomNum = function() {
