@@ -1,22 +1,20 @@
 'use strict';
 
-function First(hello) {
-    this.hello = hello;
-
-    First.prototype.writeHiPar = function() {
-        console.log(this.hello);
-    };
-
-}
-
-function Second() {
+class First {
    
-    First.prototype.writeHiPar();
- 
+    hello () {
+        console.log('Привет я метод родителя!');
+    }
 }
 
-const hi = new First("Привет я метод родителя!");
-const hiChild = new First("А я наследуемый метод!");
+class Second extends First {
+    
+    hello () {
+        super.hello();
+        console.log('А я наследуемый метод!');
+    }   
+}
 
-hi.writeHiPar();
-hiChild.writeHiPar();
+const test = new Second();
+
+test.hello();
