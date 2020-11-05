@@ -6,40 +6,49 @@ const isNumber = function(n) {
     return !isNaN(parseFloat(n)) && isFinite(n);
 };
 
-const start = function (randomNum) {
+const start = () => {
+    let randomNum = Math.floor(Math.random() * 101);
     
-    // Рандомное число
-    const getRandomNum = function() {
-        randomNum = Math.floor(Math.random() * 101);  // Загаданое случайное число от 1 до 100
-        
-        // Введенное число userNum
-        const getUserNum = function(userNum) {
-            userNum = prompt('Угадай число от 1 до 100'); 
-
-            if (userNum === null) {
-                alert('Игра окончена');
-                return;
-            }else if (!isNumber(userNum)) {
-                return(confirm('Введите число!'),
-                getUserNum(userNum));
-            } else if (userNum > randomNum) {                      
-                return(confirm('Загаданное число меньше\nПопробуй снова')), 
-                getUserNum(userNum);
-            } else if (userNum < randomNum) {                      
-                return(confirm('Загаданное число больше\nПопробуй снова')),
-                getUserNum(userNum);
-            } else if (userNum !== randomNum) {
-                return(alert('Поздравляю, Вы угадали!!!'));  
+    let carent = 10;
+    const game = () => {
+        carent--;
+        if (carent < 0) {
+            if (confirm('Попытки закончились, хотите сыграть еще?')) {
+                start();
             } else {
-                alert('Игра окончена');
-                getUserNum(userNum);
+                alert('До свидания');
+                return;
             }
-               
-        };
-        getUserNum(userNum);
+        } else {
+            const num = prompt('"Угадай число от 1 до 100" (Для выхода оставьте строку пустой)');
+            if (num === null) {
+                alert('До свидания');
+                return;
+            }
+            if (isNumber(num)) {
+                const userNum = +num;
+                if (userNum > randomNum) {
+                    alert(`Загаданное число меньше, осталось попыток: ${carent}`);
+                    game();
+                } else if (userNum < randomNum) {
+                    alert(`Загаданное число больше, осталось попыток: ${carent}`);
+                    game();
+                } else {
+                    if (confirm('Поздравляю, Вы угадали!!! Хотели бы сыграть еще?')) {
+                        start();
+                    } else {
+                        alert('До свидания');
+                        return;
+                    }
+                }
+            } else {
+                alert('Введите число');
+                game();
+            }
+        }
     };
-    getRandomNum();
+    console.log(game);
+    game();
 };
 
 start();
-
